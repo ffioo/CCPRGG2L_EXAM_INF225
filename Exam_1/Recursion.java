@@ -33,24 +33,23 @@ public class Recursion {
     }
 
     static void removeLetter(String str) {
-
         int nameLength = str.length();
         int spaceIndex = str.lastIndexOf(" ") + 1;
         String surname = str.substring(spaceIndex, nameLength);
         char lastLetter = surname.charAt(surname.length() - 2);
-        String vowels = "aeiou";
-        int vowelCheck = vowels.indexOf(lastLetter) >= 0 ? 0 : 1;
-        String result = removeLetter(str, vowelCheck, "", 0);
+        String consonant = "bcdfgkjlmnpqstvxzhrwy";
+        int consonantCheck = consonant.indexOf(lastLetter) >= 0 ? 0 : 1;
+        String result = removeLetter(str, consonantCheck, "", 0);
         System.out.println(result);
     }
 
-    private static String removeLetter(String fullName, int vowelCheck, String result, int index) {
+    private static String removeLetter(String fullName, int consonantCheck, String result, int index) {
         if (index >= fullName.length()) {
           return result;
         }
         char letter = fullName.charAt(index);
-        String vowels = "aeiou";
-        int isVowel = vowels.indexOf(letter) >= 0 ? 0 : 1;
-        return removeLetter(fullName, vowelCheck, isVowel == vowelCheck ? result + letter : result, index + 1);
+        String consonant = "bcdfgkjlmnpqstvxzhrwy";
+        int isconsonant = consonant.indexOf(letter) >= 0 ? 0 : 1;
+        return removeLetter(fullName, consonantCheck, isconsonant == consonantCheck ? result + letter : result, index + 1);
     }
 }
